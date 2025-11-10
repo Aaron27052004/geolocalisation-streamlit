@@ -26,7 +26,9 @@ if st.session_state.location_triggered:
     location = get_geolocation()
     print("🧩 Données brutes :", location)
     
-    if location:
+    if location is None:
+        st.info("⏳ En attente de la localisation… veuillez autoriser la géolocalisation dans le navigateur.")
+    else:
         st.session_state.location_data = location
         st.session_state.location_triggered = False
 
