@@ -97,8 +97,17 @@ with col2:
     DEFAULT_CENTER = [48.8566, 2.3522]
     map_center = [st.session_state.coords["lat"], st.session_state.coords["lon"]] if st.session_state.coords else DEFAULT_CENTER
 
-    # Créer la carte Folium
-    m = folium.Map(location=map_center, zoom_start=25)
+    # === MODIFICATION MINIMALE ===
+    # Créer la carte Folium avec la VUE SATELLITE
+    m = folium.Map(
+        location=map_center, 
+        zoom_start=25,
+        tiles='Esri WorldImagery', # Vue satellite par défaut
+        name='Satellite'
+    )
+
+    
+    # === FIN MODIFICATION ===
 
     # Ajouter un marqueur si les coordonnées existent
     if st.session_state.coords:
@@ -108,6 +117,9 @@ with col2:
             tooltip=tooltip,
             popup=tooltip
         ).add_to(m)
+
+    # AJOUT: Sélecteur de couches (pour basculer Satellite/Rues)
+    folium.LayerControl().add_to(m)
 
     # Afficher la carte dans Streamlit et récupérer les interactions
     # 'last_clicked' est la clé !
