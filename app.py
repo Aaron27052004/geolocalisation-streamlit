@@ -98,7 +98,7 @@ with col2:
     map_center = [st.session_state.coords["lat"], st.session_state.coords["lon"]] if st.session_state.coords else DEFAULT_CENTER
 
     # Créer la carte Folium
-    m = folium.Map(location=map_center, zoom_start=15)
+    m = folium.Map(location=map_center, zoom_start=25)
 
     # Ajouter un marqueur si les coordonnées existent
     if st.session_state.coords:
