@@ -19,7 +19,7 @@ if "location_triggered" not in st.session_state:
 if st.button("📍 Géolocalisez-moi !"):
     st.session_state.location_triggered = True
     st.session_state.location_data = None
-    st.info("⏳ Tentative de récupération de la position... (Veuillez autoriser dans votre navigateur)")
+    st.info("⏳ Récupération de la localisation...")
 
 # --- 2. Déclencheur ---
 if st.session_state.location_triggered:
